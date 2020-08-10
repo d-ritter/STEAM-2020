@@ -1,0 +1,32 @@
+var adjectives = ["baking", "blue", "wet", "lazy", "sunburnt"];
+
+var nouns = ["tree", "hill", "highway", "sky", "city"];
+
+var verbs = ["shimmers", "sweats", "melts", "swims", "gorges"];
+
+function preload() {
+  Roboto = loadFont("Roboto-Black.ttf");
+}
+
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+  textFont(Roboto, 48);
+}
+
+function draw() {
+  background(255, 255, 100);
+
+  var rnd_adjective = random(adjectives);
+  var rnd_noun = random(nouns);
+  var rnd_verb = random(verbs);
+
+  text("the", 50, 100);
+  text(rnd_adjective, 50, 150);
+  text(rnd_noun, 50, 200);
+  text(rnd_verb, 50, 250);
+}
+
+function mousePressed() {
+  draw();
+}

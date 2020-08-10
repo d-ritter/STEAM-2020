@@ -1,0 +1,57 @@
+let speedX;
+let speedY;
+var c;
+var button;
+let slider;
+var sliderP;
+
+
+function setup() {
+  c = createCanvas(400, 400);
+  background(220);
+  x = random(0, width);
+  y = random(0, height);
+
+  speedX = (random(-3, 3));
+  speedY = (random(-5, 5));
+
+  button = createButton('save');
+  button.position(19, 19);
+  button.mousePressed(saveBG);
+  slider = createSlider(25, width + 50, width / 2, 15);
+  slider.position(19, 40);
+  slider.style('width', '200px');
+}
+
+function draw() {
+  let sliderP = slider.value();
+  noStroke();
+  let redVal = map(x, 0, width, 0, 255);
+  let greenVal = map(y, 0, height, 0, 255);
+  stroke(redVal, greenVal, random(255), 125);
+  strokeWeight(random(0, 3));
+  translate(x, y);
+
+  let rotation = map(y, 0, height, 0, TWO_PI);
+  rotate(rotation);
+  noFill();
+  line(-sliderP, 0, 0, sliderP);
+  x = x + speedX;
+  y = y + speedY;
+
+  if (x > width || x < 0) {
+    speedX = -speedX;
+  }
+  if (y > height || y < 0) {
+    speedY = -speedY;
+  }
+}
+
+function saveBG() {
+  var timestamp = timestampString();
+  saveCanvas(c, timestamp + 'p5js', 'png');
+}
+
+function timestampString() {
+  return hour() + "-" + minute() + "-" + second() + "--" + month() + "-" + day() + "-" + year();
+}

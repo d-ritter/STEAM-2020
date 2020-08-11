@@ -1,0 +1,52 @@
+// https://github.com/d-ritter/
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(15, 252, 3); // Google Color Picker
+  // translate(width/2, height/2);
+  // angleMode(DEGREES);
+  // rotate(180);
+
+
+  // Face
+  push();
+  ellipse(200, 200, 200, 250);
+  stroke(3);
+  line(0, 200, 0, -200);
+  line(200, 0, 200, 400);
+  // ellipse(x, y, w, h);
+  pop();
+
+  // Eyes
+  push();
+  fill(0);
+  ellipse(160, 170, 30, 15);
+  ellipse(240, 170, 30, 15);
+  fill(255);
+  ellipse(160, 170, 10, 10);
+  ellipse(240, 170, 10, 10);
+  pop();
+
+  // Nose
+  push();
+  noStroke();
+  fill(55, 121, 219);
+  triangle(180, 220, 200, 180, 220, 220);
+  pop();
+
+  // Mouth
+  push();
+  fill(55, 121, 219);
+  beginShape();
+    strokeWeight(1);
+    vertex(150, 240);
+    vertex(250, 240);
+    vertex(210, 260);
+    vertex(190, 260);
+  endShape(CLOSE);
+  
+  pop();
+}
